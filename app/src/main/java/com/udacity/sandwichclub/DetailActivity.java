@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -78,6 +79,21 @@ public class DetailActivity extends AppCompatActivity {
         mIngredientsTextView.setText(StringUtils.getListAsCommaSeparatedString(sandwichChosen.getIngredients()));
         mOriginTextView.setText(sandwichChosen.getPlaceOfOrigin());
         mDescriptionTextView.setText(sandwichChosen.getDescription());
+
+        this.setDefaultTextInViews();
     }
 
+    private void setDefaultTextInViews(){
+        this.setDefaultText(mAkaTextView);
+        this.setDefaultText(mIngredientsTextView);
+        this.setDefaultText(mOriginTextView);
+        this.setDefaultText(mDescriptionTextView);
+    }
+
+    private void setDefaultText(TextView view){
+        System.out.println(view.getText().toString().isEmpty());
+        if(view.getText().toString().isEmpty()){
+            view.setText("Unknown");
+        }
+    }
 }
